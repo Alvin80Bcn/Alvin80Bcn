@@ -1,7 +1,7 @@
 # DynamicLinksExample
 
 use_frameworks!
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 # [START pod_ddl]
 pod 'FirebaseAnalytics'
@@ -13,4 +13,6 @@ end
 target 'DynamicLinksExampleSwift' do
 end
 target 'DynamicLinksExampleTests' do
+end
+target 'DynamicLinksSwiftUIExample' do
 end

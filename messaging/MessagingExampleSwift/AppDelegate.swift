@@ -37,20 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Register for remote notifications. This shows a permission dialog on first run, to
     // show the dialog at a more appropriate time move this registration accordingly.
     // [START register_for_notifications]
-    if #available(iOS 10.0, *) {
-      // For iOS 10 display notification (sent via APNS)
-      UNUserNotificationCenter.current().delegate = self
 
-      let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-      UNUserNotificationCenter.current().requestAuthorization(
-        options: authOptions,
-        completionHandler: { _, _ in }
-      )
-    } else {
-      let settings: UIUserNotificationSettings =
-        UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-      application.registerUserNotificationSettings(settings)
-    }
+    UNUserNotificationCenter.current().delegate = self
+
+    let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+    UNUserNotificationCenter.current().requestAuthorization(
+      options: authOptions,
+      completionHandler: { _, _ in }
+    )
 
     application.registerForRemoteNotifications()
 
@@ -79,9 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   // [START receive_message]
   func application(_ application: UIApplication,
-                   didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-                   fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult)
-                     -> Void) {
+                   didReceiveRemoteNotification userInfo: [AnyHashable: Any]) async
+    -> UIBackgroundFetchResult {
     // If you are receiving a notification message while your app is in the background,
     // this callback will not be fired till the user taps on the notification launching the application.
     // TODO: Handle data of notification
@@ -97,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Print full message.
     print(userInfo)
 
-    completionHandler(UIBackgroundFetchResult.newData)
+    return UIBackgroundFetchResult.newData
   }
 
   // [END receive_message]
@@ -120,13 +113,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 // [START ios_10_message_handling]
-@available(iOS 10, *)
+
 extension AppDelegate: UNUserNotificationCenterDelegate {
   // Receive displayed notifications for iOS 10 devices.
   func userNotificationCenter(_ center: UNUserNotificationCenter,
-                              willPresent notification: UNNotification,
-                              withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)
-                                -> Void) {
+                              willPresent notification: UNNotification) async
+    -> UNNotificationPresentationOptions {
     let userInfo = notification.request.content.userInfo
 
     // With swizzling disabled you must let Messaging know about the message, for Analytics
@@ -143,12 +135,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     print(userInfo)
 
     // Change this to your preferred presentation option
-    completionHandler([[.alert, .sound]])
+    return [[.alert, .sound]]
   }
 
   func userNotificationCenter(_ center: UNUserNotificationCenter,
-                              didReceive response: UNNotificationResponse,
-                              withCompletionHandler completionHandler: @escaping () -> Void) {
+                              didReceive response: UNNotificationResponse) async {
     let userInfo = response.notification.request.content.userInfo
 
     // [START_EXCLUDE]
@@ -163,8 +154,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     // Print full message.
     print(userInfo)
-
-    completionHandler()
   }
 }
 

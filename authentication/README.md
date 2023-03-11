@@ -156,7 +156,9 @@ We have already included the **`FBSDKLoginKit`** cocoapod in the quickstart's `P
 
 - Go to the [Facebook Developers Site](https://developers.facebook.com) and follow all
   instructions to set up a new iOS app. When asked for a bundle ID, use
-  `com.google.firebase.quickstart.AuthenticationExample`. This is the default bundle identifier for this quickstart. If you change it, be sure that the bundle identifer entered on the Facebook developer console matches that of the bundle idetifier for the quickstart.
+  `com.google.firebase.quickstart.AuthenticationExample`. This is the default bundle identifier for this quickstart. If you change it, be sure that the bundle identifer entered on the Facebook developer console matches that of the bundle identifier for the quickstart.
+- Follow Facebook's [iOS getting started guide](https://developers.facebook.com/docs/ios/getting-started/). You can skip steps 1 and 3 since
+  we've already set up the dependencies and initialization code in this sample.
 - Go to the [Firebase Console](https://console.firebase.google.com) and navigate to your project:
   - Select the **Auth** panel and then click the **Sign In Method** tab.
   - Click **Facebook** and turn on the **Enable** switch, then click **Save**.
@@ -206,7 +208,7 @@ As we mentioned above, we will need to configure dynamic links for this auth flo
     - Setup your short URL. Feel free to put whatever here, like "demo", "login, or "passwordless" for example. Click **Next**.
     - For the Deep Link URL, configure the URL to look like:
     >        https://[insert an authorized domain]/login?email=email
-    >For the authorized domain ⬆, go to the the Authentication tab, then click the "Sign-in method", and scroll down to the "Authorized domains" section. Copy the domain that looks like `[the app's name].firebaseapp.com`. Paste this entire domain into the Deep Link we are creating above. You can also instead whitelist the dynamic links URL prefix and use that here as well.
+    >For the authorized domain ⬆, go to the the Authentication tab, then click the "Sign-in method", and scroll down to the "Authorized domains" section. Copy the domain that looks like `[the app's name].firebaseapp.com`. Paste this entire domain into the Deep Link we are creating above. You can also instead allowlist the dynamic links URL prefix and use that here as well.
     - On step 3, **Define link behavior for iOS**, select **Open the deep link in your iOS App** and make sure your app is selected in the drop down.
     - Configure the following steps as you please and then hit **Create**!
 
