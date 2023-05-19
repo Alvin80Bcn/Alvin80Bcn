@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12C7ED8E63F022BFC0C9A464 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = C2C7004B227F29AB44671FF5 /* GoogleService-Info.plist */; };
-		3A4EFD856DCB21AE4251CAB4 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = C2C7004B227F29AB44671FF5 /* GoogleService-Info.plist */; };
-		BB3A5023DF8668B9AB12DBEA /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = C2C7004B227F29AB44671FF5 /* GoogleService-Info.plist */; };
+		8848765129D314A400780FA6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8848764F29D3149200780FA6 /* GoogleService-Info.plist */; };
 		EA02F68524A000E00079D000 /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA02F68424A000E00079D000 /* UserActions.swift */; };
 		EA02F68D24A063E90079D000 /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA02F68C24A063E90079D000 /* LoginDelegate.swift */; };
 		EA062D5D24A0FEB6006714D3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EA062D5C24A0FEB6006714D3 /* README.md */; };
+		EA12697F29E33A5D00D79E66 /* CryptoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA12697E29E33A5D00D79E66 /* CryptoUtils.swift */; };
 		EA20B46C2495A9F900B5E581 /* SignedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA20B46B2495A9F900B5E581 /* SignedOutView.swift */; };
 		EA20B46E2495B2C700B5E581 /* DataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA20B46D2495B2C700B5E581 /* DataSourceProtocols.swift */; };
 		EA20B503249C6C3D00B5E581 /* CustomAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA20B502249C6C3D00B5E581 /* CustomAuthViewController.swift */; };
@@ -56,10 +55,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C2C7004B227F29AB44671FF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8848764F29D3149200780FA6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		EA02F68424A000E00079D000 /* UserActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActions.swift; sourceTree = "<group>"; };
 		EA02F68C24A063E90079D000 /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
 		EA062D5C24A0FEB6006714D3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		EA12697E29E33A5D00D79E66 /* CryptoUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CryptoUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
 		EA20B46B2495A9F900B5E581 /* SignedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedOutView.swift; sourceTree = "<group>"; };
 		EA20B46D2495B2C700B5E581 /* DataSourceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceProtocols.swift; sourceTree = "<group>"; };
 		EA20B502249C6C3D00B5E581 /* CustomAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				EAEBCE0E2489FFDE00FCEA92 /* Extensions.swift */,
+				EA12697E29E33A5D00D79E66 /* CryptoUtils.swift */,
 				EA02F68C24A063E90079D000 /* LoginDelegate.swift */,
 				EA20B47924973C0400B5E581 /* DataSourceProvider */,
 				EA20B47824973BEC00B5E581 /* TransitionAnimator */,
@@ -203,7 +204,6 @@
 				EAE4CBE524855E3E00245E92 /* AuthenticationExampleUITests */,
 				EAE4CBC224855E3A00245E92 /* Products */,
 				CE54897B57069002714B8FA5 /* Pods */,
-				C2C7004B227F29AB44671FF5 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,6 +229,7 @@
 				EA20B47724973BB100B5E581 /* CustomViews */,
 				EAB3A17A2494626F00385291 /* Utility */,
 				EAE4CBCD24855E3D00245E92 /* Assets.xcassets */,
+				8848764F29D3149200780FA6 /* GoogleService-Info.plist */,
 				EA217894248979E200736757 /* LaunchScreen.storyboard */,
 				EAE4CBD224855E3D00245E92 /* Info.plist */,
 			);
@@ -358,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA217895248979E200736757 /* LaunchScreen.storyboard in Resources */,
+				8848765129D314A400780FA6 /* GoogleService-Info.plist in Resources */,
 				EAE4CBCE24855E3D00245E92 /* Assets.xcassets in Resources */,
 				EA062D5D24A0FEB6006714D3 /* README.md in Resources */,
 			);
@@ -397,6 +399,7 @@
 				EA20B50A249D3D8600B5E581 /* PasswordlessViewController.swift in Sources */,
 				EAE4CBF524857A5100245E92 /* LoginController.swift in Sources */,
 				EA20B510249FDB4400B5E581 /* OtherAuthMethods.swift in Sources */,
+				EA12697F29E33A5D00D79E66 /* CryptoUtils.swift in Sources */,
 				EAEBCE11248A9AA000FCEA92 /* Section.swift in Sources */,
 				EA20B503249C6C3D00B5E581 /* CustomAuthViewController.swift in Sources */,
 				EAE4CBC524855E3A00245E92 /* AppDelegate.swift in Sources */,
@@ -405,7 +408,6 @@
 				EAE08EB524CF5D09006FA3A5 /* AccountLinkingViewController.swift in Sources */,
 				EA527CAC24A0EE9600ADB9A2 /* LoginView.swift in Sources */,
 				EAEBCE0F2489FFDE00FCEA92 /* Extensions.swift in Sources */,
-				BB3A5023DF8668B9AB12DBEA /* GoogleService-Info.plist in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +416,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAE4CBDC24855E3E00245E92 /* AuthenticationExampleTests.swift in Sources */,
-				3A4EFD856DCB21AE4251CAB4 /* GoogleService-Info.plist in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +424,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAE4CBE724855E3E00245E92 /* AuthenticationExampleUITests.swift in Sources */,
-				12C7ED8E63F022BFC0C9A464 /* GoogleService-Info.plist in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,7 +608,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AuthenticationExampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -629,7 +631,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AuthenticationExampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -650,6 +654,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AuthenticationExampleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -670,6 +675,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AuthenticationExampleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
