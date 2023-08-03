@@ -40,7 +40,8 @@ mint bootstrap
 - [Admob](admob/README.md) ![build](https://github.com/firebase/quickstart-ios/actions/workflows/admob.yml/badge.svg)
 - [Analytics](analytics/README.md) ![build](https://github.com/firebase/quickstart-ios/actions/workflows/analytics.yml/badge.svg)
 - [Authentication](authentication/README.md) ![build](https://github.com/firebase/quickstart-ios/actions/workflows/authentication.yml/badge.svg)
-- [Remote Config](config/README.md) ![build](https://github.com/firebase/quickstart-ios/actions/workflows/config.yml/badge.svg)
+- [Remote Config](
+config/README.md) ![build](https://github.com/firebase/quickstart-ios/actions/workflows/config.yml/badge.svg)
 - [Crashlytics](crashlytics/README.md) ![build](https://github.com/firebase/quickstart-ios/actions/workflows/crashlytics.yml/badge.svg)
 - [Database](database/README.md) ![build](https://github.com/firebase/quickstart-ios/actions/workflows/database.yml/badge.svg)
 - [Firestore](firestore/README.md) ![build](https://github.com/firebase/quickstart-ios/actions/workflows/firestore.yml/badge.svg)
