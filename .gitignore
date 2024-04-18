@@ -2,4 +2,9 @@
 Pods/
 xcuserdata/
 *.xcworkspace/
-GoogleService-Info.plist
+*GoogleService-Info.plist
+Secrets
+Secrets.tar
+
+# Mint package manager
+Mint

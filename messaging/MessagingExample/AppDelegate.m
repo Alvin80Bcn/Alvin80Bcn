@@ -16,6 +16,8 @@
 #import "AppDelegate.h"
 
 @import UserNotifications;
+@import FirebaseCore;
+@import FirebaseMessaging;
 
 // Implement UNUserNotificationCenterDelegate to receive display notification via APNS for devices
 // running iOS 10 and above.
@@ -39,25 +41,15 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
   // Register for remote notifications. This shows a permission dialog on first run, to
   // show the dialog at a more appropriate time move this registration accordingly.
   // [START register_for_notifications]
-  if ([UNUserNotificationCenter class] != nil) {
-    // iOS 10 or later
-    // For iOS 10 display notification (sent via APNS)
-    [UNUserNotificationCenter currentNotificationCenter].delegate = self;
-    UNAuthorizationOptions authOptions = UNAuthorizationOptionAlert |
-        UNAuthorizationOptionSound | UNAuthorizationOptionBadge;
-    [[UNUserNotificationCenter currentNotificationCenter]
-        requestAuthorizationWithOptions:authOptions
-        completionHandler:^(BOOL granted, NSError * _Nullable error) {
-          // ...
-        }];
-  } else {
-    // iOS 10 notifications aren't available; fall back to iOS 8-9 notifications.
-    UIUserNotificationType allNotificationTypes =
-    (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
-    UIUserNotificationSettings *settings =
-    [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
-    [application registerUserNotificationSettings:settings];
-  }
+
+  [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+  UNAuthorizationOptions authOptions = UNAuthorizationOptionAlert |
+      UNAuthorizationOptionSound | UNAuthorizationOptionBadge;
+  [[UNUserNotificationCenter currentNotificationCenter]
+      requestAuthorizationWithOptions:authOptions
+      completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        // ...
+      }];
 
   [application registerForRemoteNotifications];
   // [END register_for_notifications]
@@ -65,7 +57,6 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
   return YES;
 }
 
-// [START receive_message]
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
   // If you are receiving a notification message while your app is in the background,
   // this callback will not be fired till the user taps on the notification launching the application.
@@ -74,15 +65,18 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
   // With swizzling disabled you must let Messaging know about the message, for Analytics
   // [[FIRMessaging messaging] appDidReceiveMessage:userInfo];
 
+  // [START_EXCLUDE]
   // Print message ID.
   if (userInfo[kGCMMessageIDKey]) {
     NSLog(@"Message ID: %@", userInfo[kGCMMessageIDKey]);
   }
+  // [END_EXCLUDE]
 
   // Print full message.
   NSLog(@"%@", userInfo);
 }
 
+// [START receive_message]
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
     fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
   // If you are receiving a notification message while your app is in the background,
@@ -92,10 +86,12 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
   // With swizzling disabled you must let Messaging know about the message, for Analytics
   // [[FIRMessaging messaging] appDidReceiveMessage:userInfo];
 
+  // [START_EXCLUDE]
   // Print message ID.
   if (userInfo[kGCMMessageIDKey]) {
     NSLog(@"Message ID: %@", userInfo[kGCMMessageIDKey]);
   }
+  // [END_EXCLUDE]
 
   // Print full message.
   NSLog(@"%@", userInfo);
@@ -115,16 +111,18 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
   // With swizzling disabled you must let Messaging know about the message, for Analytics
   // [[FIRMessaging messaging] appDidReceiveMessage:userInfo];
 
+  // [START_EXCLUDE]
   // Print message ID.
   if (userInfo[kGCMMessageIDKey]) {
     NSLog(@"Message ID: %@", userInfo[kGCMMessageIDKey]);
   }
+  // [END_EXCLUDE]
 
   // Print full message.
   NSLog(@"%@", userInfo);
 
   // Change this to your preferred presentation option
-  completionHandler(UNNotificationPresentationOptionNone);
+  completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionAlert);
 }
 
 // Handle notification messages after display notification is tapped by the user.
@@ -135,6 +133,9 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
   if (userInfo[kGCMMessageIDKey]) {
     NSLog(@"Message ID: %@", userInfo[kGCMMessageIDKey]);
   }
+
+  // With swizzling disabled you must let Messaging know about the message, for Analytics
+  // [[FIRMessaging messaging] appDidReceiveMessage:userInfo];
 
   // Print full message.
   NSLog(@"%@", userInfo);
@@ -155,14 +156,6 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     // Note: This callback is fired at each app startup and whenever a new token is generated.
 }
 // [END refresh_token]
-
-// [START ios_10_data_message]
-// Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
-// To enable direct data messages, you can set [Messaging messaging].shouldEstablishDirectChannel to YES.
-- (void)messaging:(FIRMessaging *)messaging didReceiveMessage:(FIRMessagingRemoteMessage *)remoteMessage {
-  NSLog(@"Received data message: %@", remoteMessage.appData);
-}
-// [END ios_10_data_message]
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
   NSLog(@"Unable to register for remote notifications: %@", error);

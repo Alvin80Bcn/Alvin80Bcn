@@ -1,0 +1,68 @@
+name: Analytics
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/analytics.yml'
+      - 'analytics/**'
+      - 'scripts/*'
+      - 'scripts/analytics.sh'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/analytics.yml'
+      - 'analytics/**'
+      - 'scripts/*'
+      - 'scripts/analytics.sh'
+
+  workflow_dispatch:
+
+env:
+  SAMPLE: Analytics
+  secrets_passphrase: ${{ secrets.GHASECRETSGPGPASSPHRASE1 }}
+
+jobs:
+  cocoapods:
+    name: cocoapods - ${{ matrix.os }}
+    runs-on: macOS-12
+    strategy:
+      matrix:
+        os: [iOS, catalyst, tvOS, macOS]
+        xcode: ["14.2"]
+        include:
+          - os: iOS
+            device: iPhone 12
+          - os: catalyst
+            device: localhost
+          - os: tvOS
+            device: Apple TV 4K (at 1080p) (2nd generation)
+            scheme: AnalyticsExampleTV
+          - os: macOS
+            device: localhost
+            scheme: AnalyticsExampleMac
+    env:
+      SPM: false
+      LEGACY: false
+      OS: ${{ matrix.os }}
+      DEVICE: ${{ matrix.device }}
+      TEST: true
+      SCHEME: ${{ matrix.scheme }}
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup
+        run: |
+          cd analytics
+          gem install bundler
+          bundle install
+          gem install xcpretty
+          bundle exec pod install --repo-update
+          ../scripts/install_prereqs/analytics.sh
+      - name: Build Swift
+        run: ./scripts/test.sh
+        env:
+          SWIFT_SUFFIX: ""
+
+  #TODO: Add `spm` job.

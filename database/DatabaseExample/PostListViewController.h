@@ -15,8 +15,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@import FirebaseUI;
-@import Firebase;
+@import FirebaseDatabaseUI;
+@import FirebaseDatabase;
 
 @interface PostListViewController : UIViewController <UITableViewDelegate>
 // [START define_database_reference]

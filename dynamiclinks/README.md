@@ -1,6 +1,11 @@
 Firebase Dynamic Links Quickstart
 =============================
 
+> [!IMPORTANT]
+> Firebase Dynamic Links is **deprecated** and should not be used in new projects. The service will shut down on August 25, 2025.
+>
+> Please see our [Dynamic Links Deprecation FAQ documentation](https://firebase.google.com/support/dynamic-links-faq) for more guidance.
+
 Introduction
 ------------
 
@@ -14,6 +19,7 @@ Getting Started
 - Paste your Dynamic Link Domain from Firebase Console to
   - **DynamicLinksExample.entitlements** file
   - **DOMAIN_URI_PREFIX** constant in ViewController.m and ViewController.swift files
+  - **domainURIPrefix** constant in DynamicLinksExampleApp.swift file
 - Run the sample on your iOS device.
 - Create a Dynamic Link 
   - in the App or
@@ -23,11 +29,12 @@ Getting Started
     - For Universal Links be sure to add your APP ID or TEAM ID to your app when
       connecting. The apple-app-site-association file will be generated and
       hosted automatically.
-    - On as of iOS 9, only Universal Links are considered strong links.
+    - As of iOS 9, only Universal Links are considered strong links.
 - From another application like Safari or Notes, you should be able to select
   your Dynamic Link and be taken to the quickstart app.
 
-Note: You will need Swift 3.0 to run the Swift version of this quickstart.
+Note: You will need a device running iOS 11.0+ for the ObjC and Swift (UIKit)
+versions of the quickstart, or iOS 14.0+ for the Swift (SwiftUI) version.
 
 Screenshots
 -----------

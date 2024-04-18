@@ -1,9 +1,9 @@
 # PerformanceExample
 use_frameworks!
-platform :ios, '8.0'
+platform :ios, '13.0'
 
-pod 'Firebase/Analytics'
-pod 'Firebase/Performance'
+pod 'FirebaseAnalytics'
+pod 'FirebasePerformance'
 
 target 'PerformanceExample' do
 end

@@ -15,14 +15,14 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
 
 @objc(MyTopPostsViewController)
 class MyTopPostsViewController: PostListViewController {
   override func getQuery() -> DatabaseQuery {
     // [START my_top_posts_query]
     // My top posts by number of stars
-    let myTopPostsQuery = (ref.child("user-posts").child(getUid())).queryOrdered(byChild: "starCount")
+    let myTopPostsQuery = ref.child("user-posts").child(getUid()).queryOrdered(byChild: "starCount")
     // [END my_top_posts_query]
     return myTopPostsQuery
   }

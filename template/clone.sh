@@ -128,7 +128,7 @@ grep $SOURCE -R . && {
 echo "Creating Podfile..."
 echo "# $DEST" > Podfile
 echo "use_frameworks!" >> Podfile
-echo "platform :ios, '8.0'" >> Podfile
+echo "platform :ios, '13.0'" >> Podfile
 if [[ -n "${POD}" ]]; then
   echo "Including pod: $POD"
   echo "pod '$POD'" >> Podfile
@@ -138,7 +138,7 @@ echo "target '${DEST}Swift' do end" >> Podfile
 echo "target '${DEST}Tests' do end" >> Podfile
 
 # Setup pods. This fetches the pods themselves, but they should be ignored by
-# version control anyway via the master .gitignore.
+# version control anyway via the main .gitignore.
 pod install
 
 echo "Done!"

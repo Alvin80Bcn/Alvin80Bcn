@@ -1,32 +1,28 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '8.4'
+platform :ios, '13.0'
 
 use_frameworks!
 
 target 'InAppMessagingExample' do
-  pod 'Firebase'
-  pod 'Firebase/InAppMessagingDisplay'
-  pod 'Firebase/DynamicLinks'
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseInAppMessaging', "> 8.11-beta"
+  pod 'FirebaseDynamicLinks'
 
   target 'InAppMessagingExampleTests' do
-    inherit! :search_paths
   end
 
   target 'InAppMessagingExampleUITests' do
-    inherit! :search_paths
   end
 end
 
 target 'InAppMessagingExampleSwift' do
-  pod 'Firebase'
-  pod 'Firebase/InAppMessagingDisplay'
-  pod 'Firebase/DynamicLinks'
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseInAppMessaging', "> 8.11-beta"
+  pod 'FirebaseDynamicLinks'
 
   target 'InAppMessagingExampleSwiftTests' do
-    inherit! :search_paths
   end
 
   target 'InAppMessagingExampleSwiftUITests' do
-    inherit! :search_paths
   end
 end

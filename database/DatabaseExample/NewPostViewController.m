@@ -17,7 +17,9 @@
 #import "NewPostViewController.h"
 #import "User.h"
 #import "Post.h"
-@import Firebase;
+#import "UIViewController+Alerts.h"
+@import FirebaseDatabase;
+@import FirebaseAuth;
 
 @interface NewPostViewController () <UITextFieldDelegate>
   @property (weak) IBOutlet UITextView *bodyTextView;
@@ -51,6 +53,10 @@
 }
 
 - (IBAction)didTapShare:(id)sender {
+  if (self.titleTextField.text.length == 0 || self.bodyTextView.text.length == 0) {
+    [self showMessagePrompt:@"Neither title nor body can be empty."];
+    return;
+  }
   // [START single_value_read]
   NSString *userID = [FIRAuth auth].currentUser.uid;
   [[[_ref child:@"users"] child:userID] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
