@@ -20,6 +20,14 @@
 
 set -euo pipefail
 
+if [ -d "/Applications/Xcode_16.1.app" ]; then
+    xcode_version="16.1"
+    iphone_version="16"
+else
+    xcode_version="15.3"
+    iphone_version="15"
+fi
+
 # Set default parameters
 if [[ -z "${SPM:-}" ]]; then
     SPM=false
@@ -31,7 +39,7 @@ if [[ -z "${SPM:-}" ]]; then
 fi
 if [[ -z "${OS:-}" ]]; then
     OS=iOS
-    DEVICE="iPhone 14"
+    DEVICE="iPhone ${iphone_version}"
     echo "Defaulting to OS=$OS"
     echo "Defaulting to DEVICE=$DEVICE"
 fi
@@ -77,7 +85,7 @@ elif [[ "$OS" == tvOS ]]; then
     DESTINATION="platform=tvOS Simulator,name=${DEVICE}"
     flags+=( -destination "$DESTINATION" )
 elif [[ "$OS" == macOS || "$OS" == catalyst ]]; then
-    DESTINATION="platform=macos"
+    DESTINATION="platform=macOS"
     flags+=( -destination "$DESTINATION" )
 elif [[ "$OS" == watchOS ]]; then
     DESTINATION="platform=watchOS Simulator,name=${DEVICE}"
@@ -123,6 +131,6 @@ function xcb() {
 }
 
 # Run xcodebuild
-sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+sudo xcode-select -s "/Applications/Xcode_${xcode_version}.app/Contents/Developer"
 xcb "${flags[@]}"
 echo "$message"
